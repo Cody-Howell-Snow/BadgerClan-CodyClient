@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BadgerClan_CodyClient.Maui.MainPage">
+
+    <Grid 
+        ColumnDefinitions="*,*,*"
+        RowDefinitions="*,*,*"
+        ColumnSpacing="20"
+        RowSpacing="20"
+        Padding="50">
+        
+        <!--Button for moving upward-->
+        <Button
+            Grid.Row="0"
+            Grid.Column="1" 
+            Text="Move Up"
+            Command="{Binding ChangeStrategyCommand}"
+            CommandParameter="MoveUp"/>
+
+        <!--Button for moving downward-->
+        <Button
+            Grid.Row="2"
+            Grid.Column="1" 
+            Text="Move Down"
+            Command="{Binding ChangeStrategyCommand}"
+            CommandParameter="MoveDown"/>
+
+        <!--Button for moving left-->
+        <Button
+            Grid.Row="1"
+            Grid.Column="0" 
+            Text="Move Left"
+            Command="{Binding ChangeStrategyCommand}"
+            CommandParameter="MoveLeft"/>
+
+        <!--Button for moving right-->
+        <Button
+            Grid.Row="1"
+            Grid.Column="2" 
+            Text="Move Right"
+            Command="{Binding ChangeStrategyCommand}"
+            CommandParameter="MoveRight"/>
+
+        <!--Button for not moving-->
+        <Button
+            Grid.Row="1"
+            Grid.Column="1" 
+            Text="Stay Still"
+            Command="{Binding ChangeStrategyCommand}"
+            CommandParameter="nomovement"/>
+    </Grid>
+
+</ContentPage>
