@@ -4,27 +4,43 @@
              x:Class="BadgerClan_CodyClient.Maui.MainPage">
 
     <Grid 
-        ColumnDefinitions="*,*,*"
+        ColumnDefinitions="*,*,*,*"
         RowDefinitions="*,*,*"
         ColumnSpacing="20"
         RowSpacing="20"
         Padding="50">
         
-        <!--Button for moving upward-->
+        <!--Button for moving up left-->
         <Button
             Grid.Row="0"
             Grid.Column="1" 
-            Text="Move Up"
+            Text="Move Up Left"
             Command="{Binding ChangeStrategyCommand}"
-            CommandParameter="MoveUp"/>
+            CommandParameter="MoveUpLeft"/>
+
+        <!--Button for moving up right-->
+        <Button
+            Grid.Row="0"
+            Grid.Column="2" 
+            Text="Move Up Right"
+            Command="{Binding ChangeStrategyCommand}"
+            CommandParameter="MoveUpRight"/>
+
+        <!--Button for moving down left-->
+        <Button
+            Grid.Row="2"
+            Grid.Column="1" 
+            Text="Move Down Left"
+            Command="{Binding ChangeStrategyCommand}"
+            CommandParameter="MoveDownLeft"/>
 
         <!--Button for moving downward-->
         <Button
             Grid.Row="2"
-            Grid.Column="1" 
-            Text="Move Down"
+            Grid.Column="2" 
+            Text="Move Down Right"
             Command="{Binding ChangeStrategyCommand}"
-            CommandParameter="MoveDown"/>
+            CommandParameter="MoveDownRight"/>
 
         <!--Button for moving left-->
         <Button
@@ -37,7 +53,7 @@
         <!--Button for moving right-->
         <Button
             Grid.Row="1"
-            Grid.Column="2" 
+            Grid.Column="3" 
             Text="Move Right"
             Command="{Binding ChangeStrategyCommand}"
             CommandParameter="MoveRight"/>
@@ -46,9 +62,52 @@
         <Button
             Grid.Row="1"
             Grid.Column="1" 
-            Text="Stay Still"
+            Grid.ColumnSpan="2"
+            Text="Consolidate"
+            BackgroundColor="White"
+            TextColor="Black"
             Command="{Binding ChangeStrategyCommand}"
-            CommandParameter="nomovement"/>
+            CommandParameter="Consolidate"/>
+        
+        
+        
+        <!---Actual strategies for here (in the corners)-->
+        <!---Attack (run & gun for now)-->
+        <Button
+            Grid.Row="0"
+            Grid.Column="0" 
+            Text="Attack"
+            BackgroundColor="LightCoral"
+            Command="{Binding ChangeStrategyCommand}"
+            CommandParameter="Attack"/>
+
+        <!---Swarm (spread out and surround local enemies)-->
+        <Button
+            Grid.Row="0"
+            Grid.Column="3" 
+            Text="Swarm (does nothing)"
+            BackgroundColor="LightCoral"
+            Command="{Binding ChangeStrategyCommand}"
+            CommandParameter="Consolidate"/>
+
+        <!---Defend (get into a tight cluster and attack local enemies)-->
+        <Button
+            Grid.Row="2"
+            Grid.Column="0" 
+            Text="Defend (does nothing)"
+            BackgroundColor="LightSteelBlue"
+            Command="{Binding ChangeStrategyCommand}"
+            CommandParameter="Consolidate"/>
+
+        <!---Flee (run away from the closest enemy)-->
+        <Button
+            Grid.Row="2"
+            Grid.Column="3" 
+            Text="Flee (does nothing)"
+            BackgroundColor="LightSteelBlue"
+            Command="{Binding ChangeStrategyCommand}"
+            CommandParameter="Consolidate"/>
+
     </Grid>
 
 </ContentPage>

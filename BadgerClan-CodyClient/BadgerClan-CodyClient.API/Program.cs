@@ -8,7 +8,6 @@ var app = builder.Build();
 app.MapGet("/", () => "Arrived at Cody's API.");
 
 app.MapPost("/", (MoveRequest request, Strategy bot) => {
-    app.Logger.LogInformation("Received move request for game {gameId} turn {turnNumber}", request.GameId, request.TurnNumber);
     MoveResponse m = new MoveResponse(bot.PlanMoves(request));
     return m;
 });
