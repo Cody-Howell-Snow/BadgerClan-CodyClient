@@ -17,5 +17,10 @@ app.MapGet("/change/{value}", (string value, Strategy bot) => {
     bot.strategy = value;
 });
 
+app.MapGet("/speed/{value}", (int value, Strategy bot) => {
+    app.Logger.LogInformation("Adjusted speed to: " + value);
+    bot.speed = value;
+});
+
 app.Run();
 

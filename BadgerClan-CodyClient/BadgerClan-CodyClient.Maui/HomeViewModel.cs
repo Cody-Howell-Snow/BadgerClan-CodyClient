@@ -14,4 +14,9 @@ public partial class HomeViewModel : ObservableObject {
     public async Task ChangeStrategy(string value) {
         await client.GetAsync("/change/" + value);
     }
+
+    [RelayCommand]
+    public async Task ChangeSpeed(string value) {
+        await client.GetAsync("/speed/" + value);
+    }
 }

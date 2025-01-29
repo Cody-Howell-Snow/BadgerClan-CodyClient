@@ -5,7 +5,7 @@
 
     <Grid 
         ColumnDefinitions="*,*,*,*"
-        RowDefinitions="*,*,*"
+        RowDefinitions="*,*,*,80"
         ColumnSpacing="20"
         RowSpacing="20"
         Padding="50">
@@ -85,28 +85,62 @@
         <Button
             Grid.Row="0"
             Grid.Column="3" 
-            Text="Swarm (does nothing)"
+            Text="Swarm"
             BackgroundColor="LightCoral"
             Command="{Binding ChangeStrategyCommand}"
-            CommandParameter="Consolidate"/>
+            CommandParameter="Swarm"/>
 
         <!---Defend (get into a tight cluster and attack local enemies)-->
         <Button
             Grid.Row="2"
             Grid.Column="0" 
-            Text="Defend (does nothing)"
+            Text="Defend"
             BackgroundColor="LightSteelBlue"
             Command="{Binding ChangeStrategyCommand}"
-            CommandParameter="Consolidate"/>
+            CommandParameter="Defend"/>
 
         <!---Flee (run away from the closest enemy)-->
         <Button
             Grid.Row="2"
             Grid.Column="3" 
-            Text="Flee (does nothing)"
+            Text="Flee"
             BackgroundColor="LightSteelBlue"
             Command="{Binding ChangeStrategyCommand}"
-            CommandParameter="Consolidate"/>
+            CommandParameter="Flee"/>
+        
+        
+        <!---Speed buttons!-->
+        <Button
+            Grid.Row="3"
+            Grid.Column="1" 
+            Text="1"
+            BackgroundColor="PaleVioletRed"
+            Command="{Binding ChangeSpeedCommand}"
+            CommandParameter="1"/>
+
+        <Button
+            Grid.Row="3"
+            Grid.Column="2" 
+            Text="2"
+            BackgroundColor="PaleVioletRed"
+            Command="{Binding ChangeSpeedCommand}"
+            CommandParameter="2"/>
+
+        <Button
+            Grid.Row="3"
+            Grid.Column="3" 
+            Text="3"
+            BackgroundColor="PaleVioletRed"
+            Command="{Binding ChangeSpeedCommand}"
+            CommandParameter="3"/>
+
+        <Button
+            Grid.Row="3"
+            Grid.Column="0" 
+            Text="0"
+            BackgroundColor="PaleVioletRed"
+            Command="{Binding ChangeSpeedCommand}"
+            CommandParameter="0"/>
 
     </Grid>
 
