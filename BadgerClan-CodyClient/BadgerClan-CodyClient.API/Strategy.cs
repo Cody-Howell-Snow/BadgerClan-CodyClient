@@ -95,15 +95,16 @@ public class Strategy {
 
         var enemies = request.Units.Where(x => x.Team != request.YourTeamId);
         foreach (var unit in request.Units.Where(x => x.Team == request.YourTeamId)) {
-            var closest = enemies.OrderBy(u => u.Location.Distance(unit.Location)).FirstOrDefault();
-            if (closest != null) {
-                if (closest.Location.Distance(unit.Location) <= unit.AttackDistance) {
-                    moves.Add(SharedMoves.AttackClosest(unit, closest));
-                    moves.Add(SharedMoves.AttackClosest(unit, closest));
+            var closestandweak = enemies.OrderBy(u => u.Health).ThenBy(u => u.Location.Distance(unit.Location));
+            var target = closestandweak.ToList()[unit.Id % 3];
+            if (target != null) {
+                if (target.Location.Distance(unit.Location) <= unit.AttackDistance) {
+                    moves.Add(SharedMoves.AttackClosest(unit, target));
+                    moves.Add(SharedMoves.AttackClosest(unit, target));
                 } else if (request.Medpacs > 0 && unit.Health < unit.MaxHealth) {
                     moves.Add(new Move(MoveType.Medpac, unit.Id, unit.Location));
                 } else {
-                    moves.Add(SharedMoves.StepToClosest(unit, closest, request));
+                    moves.Add(SharedMoves.StepToClosest(unit, target, request));
                 }
             }
         }
