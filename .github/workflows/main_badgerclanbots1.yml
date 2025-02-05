@@ -24,10 +24,10 @@ jobs:
           dotnet-version: '9.x'
 
       - name: Build with dotnet
-        run: cd ./BadgerClan-CodyClient/BadgerClan-CodyClient.API/BadgerClan-CodyClient.API.csproj && dotnet build --configuration Release
+        run: cd ./BadgerClan-CodyClient/BadgerClan-CodyClient.API && dotnet build --configuration Release
 
       - name: dotnet publish
-        run: cd ./BadgerClan-CodyClient/BadgerClan-CodyClient.API/BadgerClan-CodyClient.API.csproj && dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        run: cd ./BadgerClan-CodyClient/BadgerClan-CodyClient.API && dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
