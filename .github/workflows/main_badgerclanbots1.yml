@@ -23,6 +23,9 @@ jobs:
         with:
           dotnet-version: '9.x'
 
+      - name: CD into build
+        run: cd ./BadgerClan-CodyClient/BadgerClan-CodyClient.API
+
       - name: Build with dotnet
         run: dotnet build --configuration Release
 
