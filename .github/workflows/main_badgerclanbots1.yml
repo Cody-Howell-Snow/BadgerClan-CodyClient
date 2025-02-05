@@ -65,4 +65,35 @@ jobs:
           app-name: 'BadgerClanBots1'
           slot-name: 'Production'
           package: .
-          
+
+    deploy:
+      runs-on: ubuntu-latest
+      needs: build
+      environment:
+        name: 'Production'
+        url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+      permissions:
+        id-token: write #This is required for requesting the JWT
+        contents: read #This is required for actions/checkout
+
+      steps:
+        - name: Download artifact from build job
+          uses: actions/download-artifact@v4
+          with:
+            name: .net-app
+        
+        - name: Login to Azure
+          uses: azure/login@v2
+          with:
+            client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_F9E569A5689A4A628958F6C72C0FD8EF }}
+            tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_C306F555C90F446D8B46CC32079612AD }}
+            subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_BEA901045EFA4488995F78A31FF9FC74 }}
+
+        - name: Deploy to Azure Web App
+          id: deploy-to-webapp
+          uses: azure/webapps-deploy@v3
+          with:
+            app-name: 'BadgerClanBots2'
+            slot-name: 'Production'
+            package: .
+            
