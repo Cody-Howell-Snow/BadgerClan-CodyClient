@@ -127,7 +127,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build2
     environment:
-      name: 'production'
+      name: 'Production2'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
       id-token: write #This is required for requesting the JWT
@@ -151,5 +151,5 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'GrpcBot'
-          slot-name: 'production'
+          slot-name: 'Production2'
           package: .
