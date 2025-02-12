@@ -1,7 +1,7 @@
 ﻿using BadgerClan.Logic;
 using BadgerClan.Logic.Bot;
 
-namespace BadgerClan_CodyClient.API;
+namespace BadgerClan_CodyClient.Library;
 
 public class Strategy {
     public string strategy = "Consolidate";

@@ -4,12 +4,12 @@
              x:Class="BadgerClan_CodyClient.Maui.MainPage">
 
     <Grid 
-        ColumnDefinitions="*,*,*,*"
+        ColumnDefinitions="*,*,*,*,*"
         RowDefinitions="*,*,*,80"
         ColumnSpacing="20"
         RowSpacing="20"
         Padding="50">
-        
+
         <!--Button for moving up left-->
         <Button
             Grid.Row="0"
@@ -68,9 +68,9 @@
             TextColor="Black"
             Command="{Binding ChangeStrategyCommand}"
             CommandParameter="Consolidate"/>
-        
-        
-        
+
+
+
         <!---Actual strategies for here (in the corners)-->
         <!---Attack (run & gun for now)-->
         <Button
@@ -107,8 +107,8 @@
             BackgroundColor="LightSteelBlue"
             Command="{Binding ChangeStrategyCommand}"
             CommandParameter="Flee"/>
-        
-        
+
+
         <!---Speed buttons!-->
         <Button
             Grid.Row="3"
@@ -126,21 +126,52 @@
             Command="{Binding ChangeSpeedCommand}"
             CommandParameter="2"/>
 
-        <Button
-            Grid.Row="3"
-            Grid.Column="3" 
-            Text="3"
-            BackgroundColor="PaleVioletRed"
-            Command="{Binding ChangeSpeedCommand}"
-            CommandParameter="3"/>
+        <!--API endpoint selectors-->
+        <HorizontalStackLayout
+            Grid.Row="0"
+            Grid.Column="4">
+            <Label
+                Text="Localhost"/>
+            <CheckBox
+                IsChecked="{Binding Localhost}"/>
+        </HorizontalStackLayout>
 
-        <Button
+        <HorizontalStackLayout
+            Grid.Row="1"
+            Grid.Column="4">
+            <Label
+                Text="Azure 1"/>
+            <CheckBox
+                IsChecked="{Binding Azure1}"/>
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout
+            Grid.Row="2"
+            Grid.Column="4">
+            <Label
+                Text="Azure 2"/>
+            <CheckBox
+                IsChecked="{Binding Azure2}"/>
+        </HorizontalStackLayout>
+
+
+        <HorizontalStackLayout
             Grid.Row="3"
-            Grid.Column="0" 
-            Text="0"
-            BackgroundColor="PaleVioletRed"
-            Command="{Binding ChangeSpeedCommand}"
-            CommandParameter="0"/>
+            Grid.Column="4">
+            <Label
+                Text="Grpc"/>
+            <CheckBox
+                IsChecked="{Binding Grpc}"/>
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout
+            Grid.Row="3"
+            Grid.Column="3">
+            <Label
+                Text="{Binding Response.NewStrat, 
+                StringFormat='Current GRPC strategy: {0}', 
+                TargetNullValue='GRPC strategy not set.'}"/>
+        </HorizontalStackLayout>
 
     </Grid>
 

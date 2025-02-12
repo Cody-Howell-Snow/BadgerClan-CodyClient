@@ -1,0 +1,6 @@
+@BadgerClan_CodyClient.Grpc_HostAddress = http://localhost:5083
+
+GET {{BadgerClan_CodyClient.Grpc_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

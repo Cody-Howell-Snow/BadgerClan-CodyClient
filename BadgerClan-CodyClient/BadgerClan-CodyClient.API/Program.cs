@@ -1,9 +1,11 @@
 using BadgerClan.Logic;
-using BadgerClan_CodyClient.API;
+using BadgerClan_CodyClient.Library;
+using ProtoBuf.Grpc.Server;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton<Strategy>();
 var app = builder.Build();
+
 
 app.MapGet("/", () => "Arrived at Cody's API.");
 
